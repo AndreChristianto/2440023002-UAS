@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('account_id');
-            $table->foreignId('item_id');
-            $table->integer('price');
-
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
-            $table->foreign('item_id')->references('id')->on('item')->onDelete('cascade');
+            $table->foreignId('item_id');
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->integer('price');
         });
     }
 

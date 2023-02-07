@@ -10,3 +10,15 @@ h1 {
     background-size: cover;
 }
 
+.login-content {
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.rounded-t-5 {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
