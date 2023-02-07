@@ -1,0 +1,12 @@
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.home-content {
+    background-image: url('../img/grocery-background_opacity.jpg');
+    height: 45vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
