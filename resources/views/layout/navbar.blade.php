@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar-background">
     <div class="container-fluid" style="height: 4vw">
         <div>
-            <a class="navbar-brand" href="/">@lang('public.Amazing E-Grocery')</a>
+            <a class="navbar-brand" href="/">Amazing E-Grocery</a>
             <a class="nav-item" href="/home">@lang('public.Home')</a>
             <a class="nav-item" href="/cart">@lang('public.Cart')</a>
             <a class="nav-item" href="/profile">@lang('public.Profile')</a>

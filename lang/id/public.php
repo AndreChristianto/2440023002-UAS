@@ -1,7 +1,6 @@
 <?php
     return [
-        'Amazing E-Grocery' => 'E-Grocery Menakjubkan',
-        'Home' => 'Halaman Utama',
+        'Home' => 'Beranda',
         'Cart' => 'Keranjang',
         'Profile' => 'Profil',
         'Account Maintenance' => 'Pemeliharaan Akun',

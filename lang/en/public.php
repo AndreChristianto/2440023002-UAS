@@ -1,6 +1,5 @@
 <?php
     return [
-        'Amazing E-Grocery' => 'Amazing E-Grocery',
         'Home' => 'Home',
         'Cart' => 'Cart',
         'Profile' => 'Profile',

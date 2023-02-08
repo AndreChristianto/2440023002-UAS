@@ -94,6 +94,8 @@ class OrderController extends Controller
                 'item_id' => $cart['item_id'],
                 'price' => $cart['price']
             ]);
+
+            Item::find($cart['item_id'])->delete();
         }
         session()->forget('cart');
         return redirect()->back()->with('success', 'Success! We will contact you in 1 x 24 hours');
