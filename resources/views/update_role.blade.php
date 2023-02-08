@@ -22,12 +22,12 @@
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <div class="form-outline">
-                            <label class="form-label select-label">Role</label>
+                            <label class="form-label select-label">@lang('public.Role')</label>
                         </div>
                         <input type="hidden" name="user_id" value="{{ $user }}">
                         @if (Auth::user()->role_id == 2)
                             <select name="role" class="select form-control-lg">
-                                <option>Choose Role</option>
+                                <option>@lang('public.Choose Role')</option>
                                 @foreach ($roles as $role)
                                     <option value="{{ $role->id }}" {{ $user_role->role_name == $role->role_name ? 'selected' : '' }}>{{ $role->role_name }}</option>
                                 @endforeach

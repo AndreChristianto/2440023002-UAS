@@ -3,7 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
-use Illuminate\Support\Facades\App;
+use App\Http\Controllers\LocalizationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get("locale/{lange}", [LocalizationController::class, 'setLang']);
 
 Route::get('/register', [AccountController::class, 'viewRegister'])->middleware('logout');
 Route::post('/register', [AccountController::class, 'register'])->middleware('logout');

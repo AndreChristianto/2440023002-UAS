@@ -25,13 +25,13 @@
                     <div class="row">
                     <div class="col-md-6 mb-4">
                         <div class="form-outline">
-                            <label class="form-label" for="firstName">First Name</label>
+                            <label class="form-label" for="firstName">@lang('public.First Name')</label>
                             <input type="text" id="first_name" name="first_name" class="form-control form-control-lg" value="{{ auth()->user()->first_name }}" />
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <div class="form-outline">
-                            <label class="form-label" for="lastName">Last Name</label>
+                            <label class="form-label" for="lastName">@lang('public.Last Name')</label>
                             <input type="text" id="last_name" name="last_name" class="form-control form-control-lg" value="{{ auth()->user()->last_name }}" />
                         </div>
                     </div>
@@ -40,17 +40,17 @@
                     <div class="row">
                         <div class="col-md-6 mb-4">
                         <div class="form-outline">
-                            <label class="form-label" for="email">Email</label>
+                            <label class="form-label" for="email">@lang('public.Email')</label>
                             <input type="text" id="email" name="email" class="form-control form-control-lg" value="{{ auth()->user()->email }}" />
                         </div>
                         </div>
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
-                                <label class="form-label select-label">Role</label>
+                                <label class="form-label select-label">@lang('public.Role')</label>
                             </div>
                             @if (Auth::user()->role_id == 2)
                                 <select name="role" class="select form-control-lg">
-                                    <option>Choose Role</option>
+                                    <option>@lang('public.Choose Role')</option>
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->id }}" {{ $user_role->role_name == $role->role_name ? 'selected' : '' }}>{{ $role->role_name }}</option>
                                     @endforeach
@@ -65,7 +65,7 @@
 
                     <div class="row">
                         <div class="col-md-6 mb-4">
-                            <h6 class="mb-2 pb-1">Gender: </h6>
+                            <h6 class="mb-2 pb-1">@lang('public.Gender'): </h6>
                             @foreach ($genders as $gender)
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="gender" id="gender" value="{{ $gender->id }}" {{ $user_gender->gender_desc == $gender->gender_desc ? 'checked' : '' }} />
@@ -74,7 +74,7 @@
                             @endforeach
                         </div>
                         <div class="col-md-6 mb-4">
-                            <h6 class="mb-2 pb-1">Display Picture (Please reselect your image)</h6>
+                            <h6 class="mb-2 pb-1">@lang('public.Display Picture') (Please reselect your image)</h6>
                             <div class="form-group">
                                 <input type="file" class="form-control form-control-lg" id="display_picture" name="display_picture">
                             </div>
@@ -84,13 +84,13 @@
                     <div class="row">
                         <div class="col-md-6 mb-4">
                         <div class="form-outline">
-                            <label class="form-label" for="firstName">New Password</label>
+                            <label class="form-label" for="firstName">@lang('public.Password')</label>
                             <input type="password" id="password" name="password" class="form-control form-control-lg"/>
                         </div>
                         </div>
                         <div class="col-md-6 mb-4">
                         <div class="form-outline">
-                            <label class="form-label" for="lastName">Confirm Password</label>
+                            <label class="form-label" for="lastName">@lang('public.Confirm Password')</label>
                             <input type="password" id="password_confirmation" name="password_confirmation" class="form-control form-control-lg" />
                         </div>
                         </div>

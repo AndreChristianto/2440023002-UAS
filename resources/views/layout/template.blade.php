@@ -21,16 +21,16 @@
     @if (Session::has('success'))
     <div class="alert alert-success alert-dismissible mt-3" role="alert">
         <button type="button" class="close btn btn-outline-success" data-dismiss="alert">
-            Dismiss
+            @lang('public.Dismiss')
         </button>
-        <strong style="margin-left: 1vw">Success !</strong> {{ session('success') }}
+        <strong style="margin-left: 1vw">@lang('public.Success') !</strong> {{ session('success') }}
     </div>
     @elseif (Session::has('fail'))
     <div class="alert alert-danger alert-dismissible mt-3" role="alert">
         <button type="button" class="close btn btn-outline-danger" data-dismiss="alert">
-            Dismiss
+            @lang('public.Dismiss')
         </button>
-        <strong style="margin-left: 1vw">Success !</strong> {{ session('fail') }}
+        <strong style="margin-left: 1vw">@lang('public.Success') !</strong> {{ session('fail') }}
     </div>
     @endif
 

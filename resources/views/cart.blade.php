@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center" style="margin-top:3vw">Cart</h1>
+    <h1 class="text-center" style="margin-top:3vw">@lang('public.Cart')</h1>
     <div class="view-cart" style="margin-bottom: 3vw">
         <?php $total = 0 ?>
 
@@ -21,7 +21,7 @@
                     Rp.{{ $details['price'] }}
                 </div>
                 <div class="text-center align-self-center">
-                    <button class="btn btn-outline-danger remove-from-cart" data-id="{{ $id }}">Delete</button>
+                    <button class="btn btn-outline-danger remove-from-cart" data-id="{{ $id }}">@lang('public.Delete')</button>
                 </div>
             @endforeach
         </div>
@@ -30,12 +30,12 @@
             <form action="/checkout" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-primary ms-3">
-                  Check Out
+                    @lang('public.Check Out')
                 </button>
               </form>
         </div>
         @else
-            <h1 class="text-center">Empty!</h1>
+            <h1 class="text-center">@lang('public.Empty')!</h1>
         @endif
     </div>
 @endsection

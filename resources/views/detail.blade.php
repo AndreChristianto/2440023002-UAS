@@ -8,18 +8,18 @@
             <img class="detail-img" src="/img/vegetable-img.png" alt="Food" style="width:300px; height:300px">
         </div>
         <div style="margin-left:2vw">
-            <h5>Price : Rp.{{ $detail['price'] }}</h5>
+            <h5>@lang('public.Price') : Rp.{{ $detail['price'] }}</h5>
             <br>
-            <h5><b>Product Detail</b></h5>
+            <h5><b>@lang('public.Product Detail')</b></h5>
             <p>{{ $detail['item_desc'] }}</p>
             <hr>
             <form class="" method="POST" action="/add-to-cart/{{ $detail->id }}">
             @csrf
             <div>
-                <button type="submit" class="btn btn-success btn-update buy-back">Buy</button>
+                <button type="submit" class="btn btn-success btn-update buy-back">@lang('public.Buy')</button>
                 </form>
                 <a href="/home" class="text-decoration-none text-white"><button type="button"
-                    class="btn btn-outline-danger btn-back buy-back" style="margin-left: 1vw">Back</button></a>
+                    class="btn btn-outline-danger btn-back buy-back" style="margin-left: 1vw">@lang('public.Back')</button></a>
             </div>
         </div>
     </div>

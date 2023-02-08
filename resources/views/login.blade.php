@@ -16,24 +16,24 @@
                 @if ($errors->any())
                     <div class="text-center"><strong class="text-danger">{{ $errors->first() }}</strong></div>
                 @endif
-                <h1>Login</h1>
+                <h1>@lang('public.Login')</h1>
                 <form action="/login" method="POST">
                     @csrf
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="email">Email address</label>
+                        <label class="form-label" for="email">@lang('public.Email')</label>
                         <input type="email" id="email" name="email" class="form-control" autofocus/>
                     </div>
                     <!-- Password input -->
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="password">Password</label>
+                        <label class="form-label" for="password">@lang('public.Password')</label>
                         <input type="password" id="password" name="password" class="form-control" autofocus/>
                     </div>
 
                     <!-- Submit button -->
                     <input class="btn btn-primary btn-lg" type="submit" value="Sign In" />
                     <br>
-                    <a href="/register">Don't have an Account? Click here to Sign Up</a>
+                    <a href="/register">@lang('public.No Account? Click here to Sign Up')</a>
                 </form>
             </div>
             </div>
