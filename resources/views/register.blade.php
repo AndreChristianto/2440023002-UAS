@@ -86,10 +86,11 @@
                     </div>
                     </div>
                 </div>
-                <div class="mt-4 pt-2">
-                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                <div class="mt-4 pt-2 text-center">
+                    <input class="btn btn-primary btn-lg" style="width:7vw" type="submit" value="Submit" />
+                    <br>
+                    <a class="" href="/login">Already have an Account? Click here to login</a>
                 </div>
-
             </form>
             </div>
         </div>

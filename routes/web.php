@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +35,7 @@ Route::delete('/delete-account/{id}', [AccountController::class, 'deleteAccount'
 
 Route::get('/home', [ItemController::class, 'viewHome'])->middleware('login');
 Route::get('/detail/{id}', [ItemController::class, 'viewDetail'])->middleware('login');
-Route::get('/cart', [ItemController::class, 'viewCart'])->middleware();
+Route::get('/cart', [ItemController::class, 'viewCart'])->middleware('login');
 Route::post('/add-to-cart/{id}', [ItemController::class, 'addToCart'])->middleware('login');
 Route::delete('/remove-from-cart', [ItemController::class, 'remove'])->middleware('login');
 

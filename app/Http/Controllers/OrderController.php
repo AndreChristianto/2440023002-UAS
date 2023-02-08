@@ -96,6 +96,6 @@ class OrderController extends Controller
             ]);
         }
         session()->forget('cart');
-        return redirect()->back()->with('success', 'Checkout Completed');
+        return redirect()->back()->with('success', 'Success! We will contact you in 1 x 24 hours');
     }
 }

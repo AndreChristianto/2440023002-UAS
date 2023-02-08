@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center mt-3">Cart</h1>
-    <div class="view-cart">
+    <h1 class="text-center" style="margin-top:3vw">Cart</h1>
+    <div class="view-cart" style="margin-bottom: 3vw">
         <?php $total = 0 ?>
 
         @if (session('cart'))
@@ -25,7 +25,7 @@
                 </div>
             @endforeach
         </div>
-        <div class="text-center">
+        <div class="text-center" style="margin-top: 3vw">
             <h1><strong>Total : {{ $total }}</strong></h1>
             <form action="/checkout" method="POST">
                 @csrf
@@ -35,7 +35,7 @@
               </form>
         </div>
         @else
-                <h1 class="text-center align-self-center">Empty!</h1>
+            <h1 class="text-center">Empty!</h1>
         @endif
     </div>
 @endsection

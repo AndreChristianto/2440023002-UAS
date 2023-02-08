@@ -78,7 +78,7 @@ class AccountController extends Controller
         }
 
         // @dd($request->password);
-        return back();
+        return back()->withErrors('Incorrect Email or Password!');
     }
 
     public function logout()
@@ -154,7 +154,7 @@ class AccountController extends Controller
         $user['updated_at'] = date("Y-m-d H:i:s");
         $user->save();
 
-        return redirect('/home');
+        return redirect('/home')->with('success', 'Saved!');
     }
 
     public function viewAccountMaintenance() {

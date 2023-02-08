@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-background">
+    <div class="container-fluid" style="height: 4vw">
       <div>
         <a class="navbar-brand" href="/">Amazing E-Grocery</a>
         <a class="nav-item" href="/home">Home</a>
@@ -48,8 +48,8 @@
                     <button type="submit" class="btn btn-outline-danger">Logout</button>
                 </form>
             @else
-                <a href="/register" class="btn btn-outline-success">Register</a>
-                <a href="/login" class="btn btn-outline-success">Login</a>
+                <a href="/register" class="btn btn-success register-login">Register</a>
+                <a href="/login" class="btn btn-success register-login">Login</a>
             @endauth
         </div>
       </div>

@@ -18,7 +18,7 @@ class CheckIfLoggedIn
     public function handle(Request $request, Closure $next)
     {
         if(!Auth::check()) {
-          return redirect('/register');
+          return redirect('/');
         }
         return $next($request);
     }

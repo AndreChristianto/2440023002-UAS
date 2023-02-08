@@ -117,7 +117,7 @@ class ItemController extends Controller
                 ]
             ];
             session()->put('cart', $cart);
-            return redirect()->back()->with('success', 'Product added to cart successfully');
+            return redirect('/home')->with('success', 'Product added to cart successfully');
         }
 
         $cart[$id] = [
@@ -127,7 +127,7 @@ class ItemController extends Controller
         ];
 
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added successfully');
+        return redirect('/home')->with('success', 'Product added successfully');
     }
 
     public function remove(Request $request)

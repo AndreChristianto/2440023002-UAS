@@ -11,7 +11,7 @@
     <div class="container py-5 h-100">
         <div class="w-100 d-flex">
             <div class="align-self-center card shadow-2-strong" style="margin-right: 2vw">
-                <img src="{{ asset(auth()->user()->display_picture_link)}}" alt="Profile Picture" class="w-100">
+                <img src="{{ asset(auth()->user()->display_picture_link)}}" alt="Profile Picture" style="width:23vw; margin-right:2vw">
             </div>
             <div class="card shadow-2-strong card-registration w-75" style="border-radius: 15px;">
                 <div class="card-body p-4 p-md-5">

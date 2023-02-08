@@ -2,9 +2,55 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.account-maintenance-content {
+    min-height: 45vw;
+}
+
+.alert {
+    position:fixed;
+    top: 4.5vw;
+    left: 0px;
+    width: 100%;
+    z-index:9999;
+    border-radius:0px
+}
+
+.btn-success {
+    color: white;
+    background-color: rgb(34, 138, 34);
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open>.dropdown-toggle.btn-success {
+    color: rgb(34, 138, 34);
+    background-color: white;
+    border-color: rgb(34, 138, 34); /*set the color you want here*/
+}
+
+.buy-back {
+    width: 6vw;
+}
+
+.detail-content {
+    min-height: 45vw;
+}
+
+.detail-content-inner {
+    top: 50%;
+}
+
 .home-content {
     padding-left: 5vw;
     padding-right: 5vw;
+}
+
+.i-line-1 {
+    font-size: 3vw;
+    font-weight: 100;
+}
+
+.i-line-2 {
+    font-size: 6vw;
+    font-weight: 50;
 }
 
 .index-content {
@@ -22,14 +68,55 @@ h1 {
     margin-right: 10vw;
 }
 
+.navbar-background {
+    background-color: #1B1B1B;
+}
+
+.navbar-brand {
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-weight: 100;
+}
+
 .nav-item {
     margin-left: 1vw;
     text-decoration: none;
+    color: whitesmoke;
+}
+
+.nav-item {
+    margin-left: 1vw;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.nav-item:hover, .nav-item:focus, .nav-item:active, .nav-item.active, .open>.dropdown-toggle.nav-item {
+    color: slategray;
+}
+
+.page-item.active .page-link {
+    color: white;
+    background-color: rgb(34, 138, 34);
+    border-color: rgb(34, 138, 34);
+}
+
+.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
+    z-index: 3;
+    color: white;
+    background-color: rgb(125, 0, 0);
+    border-color: rgb(125, 0, 0);
+}
+
+.register-login {
+    width: 5vw;
 }
 
 .rounded-t-5 {
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
+}
+
+.update-delete {
+    width: 8vw;
 }
 
 .view-cart {
