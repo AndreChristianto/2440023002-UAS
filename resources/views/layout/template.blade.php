@@ -18,12 +18,35 @@
 <body>
     @include('layout.navbar')
 
+    @if (Session::has('success'))
+    <div class="alert alert-success alert-dismissible mt-3" role="alert">
+        <button type="button" class="close btn btn-outline-success" data-dismiss="alert">
+            Dismiss
+        </button>
+        <strong style="margin-left: 1vw">Success !</strong> {{ session('success') }}
+    </div>
+    @elseif (Session::has('fail'))
+    <div class="alert alert-danger alert-dismissible mt-3" role="alert">
+        <button type="button" class="close btn btn-outline-danger" data-dismiss="alert">
+            Dismiss
+        </button>
+        <strong style="margin-left: 1vw">Success !</strong> {{ session('fail') }}
+    </div>
+    @endif
+
     @yield('content')
 
     @include('layout.footer')
 
     {{-- Bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $(".close").click(function() {
+                $(".alert").alert("close");
+            });
+        });
+    </script>
     @yield('scripts')
 </body>
 </html>

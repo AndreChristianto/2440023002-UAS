@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 
 class Account extends Model implements Authenticatable
@@ -12,9 +13,9 @@ class Account extends Model implements Authenticatable
     use HasFactory;
     use Notifiable;
     use \Illuminate\Auth\Authenticatable;
+    use SoftDeletes;
 
-
-    public $remember_token;
+        public $remember_token;
     protected $guarded = [
         'id'
     ];

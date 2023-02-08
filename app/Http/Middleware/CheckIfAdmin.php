@@ -17,7 +17,7 @@ class CheckIfAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!Auth::check() || Auth::user()->role == 2) {
+        if(!Auth::check() || Auth::user()->role_id != 2) {
           return back();
         }
         return $next($request);

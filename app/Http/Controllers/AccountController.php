@@ -8,88 +8,13 @@ use App\Models\Gender;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AccountController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function viewRegister() {
         $roles = Role::all();
         $genders = Gender::all();
@@ -103,12 +28,12 @@ class AccountController extends Controller
     public function register(Request $request) {
         // @dd($request);
         $rules = [
-            'first_name' => 'required|max:25',
-            'last_name' => 'required|max:25',
-            'email' => 'required|email:rfc,dns|unique:accounts,email',
+            'first_name' => 'required|max:25|regex:/^[a-zA-Z]*$/',
+            'last_name' => 'required|max:25|regex:/^[a-zA-Z]*$/',
+            'email' => 'required|email:rfc,dns|unique:accounts,email|regex:/^(?=.*[@])(?=.*[.]).+$/',
             'role' => 'required',
             'gender' => 'required',
-            'display_picture' => 'required',
+            'display_picture' => 'required|image',
             'password' => 'required|min:8|regex:/^(?=.*[0-9])/|confirmed',
             'password_confirmation' => 'required'
         ];
@@ -156,16 +81,6 @@ class AccountController extends Controller
         return back();
     }
 
-    // public function login(Request $request) {
-    //     $credentials = $request->only('email', 'password');
-
-    //     if (Auth::attempt($credentials)) {
-    //         return redirect()->intended('index');
-    //     }
-
-    //     return redirect()->back()->withErrors(['email' => 'The provided credentials are incorrect.']);
-    // }
-
     public function logout()
     {
         Auth::logout();
@@ -173,6 +88,119 @@ class AccountController extends Controller
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('fail', 'Logged Out Successfully');
+    }
+
+    public function viewProfile()
+    {
+        $roles = Role::all();
+        $genders = Gender::all();
+        $user_role = Role::find(auth()->user()->role_id);
+        $user_gender = Gender::find(auth()->user()->gender_id);
+
+        return view('profile', [
+            // 'first_name' => auth()->user()->first_name,
+            // 'last_name' => auth()->user()->last_name,
+            // 'email' => auth()->user()->email,
+            // 'role_id' => auth()->user()->role,
+            // 'gender_id' => auth()->user()->gender,
+            // 'display_picture_link' => auth()->user()->display_picture_link,
+            // 'password' => auth()->user()->password,
+            'roles' => $roles,
+            'genders' => $genders,
+            'user_role' => $user_role,
+            'user_gender' => $user_gender
+        ]);
+    }
+
+    public function editProfile(Request $request) {
+        // @dd($request->all());
+        $user = Account::find(auth()->user()->id);
+
+        $rules = [
+            'first_name' => 'required|max:25|regex:/^[a-zA-Z]*$/',
+            'last_name' => 'required|max:25|regex:/^[a-zA-Z]*$/',
+            'email' => 'required|email:rfc,dns|regex:/^(?=.*[@])(?=.*[.]).+$/',
+            'role' => 'required',
+            'gender' => 'required',
+            'display_picture' => 'required|image',
+            'password' => 'required|min:8|regex:/^(?=.*[0-9])/|confirmed',
+            'password_confirmation' => 'required'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+            return back()->withErrors($validator);
+        }
+
+        $image = $request->file('display_picture');
+        $imageName = $image->getClientOriginalName();
+
+        Storage::putFileAs('public/img', $image, $imageName);
+        $imageUrl = 'storage/img/'.$imageName;
+
+        $user['first_name'] = $request->first_name;
+        $user['last_name'] = $request->last_name;
+        $user['email'] = $request->email;
+        // $user_role = DB::table('roles')->where('role_name', '=', $request->role)->get();
+        // dd($request->role);
+        $user['role_id'] = $request->role;
+        // @dd($request->all());
+        // $user_gender = Gender::find($request->gender);
+        $user['gender_id'] = $request->gender;
+        $user['display_picture_link'] = $imageUrl;
+        $user['password'] = Hash::make($request->password);
+        $user['updated_at'] = date("Y-m-d H:i:s");
+        $user->save();
+
+        return redirect('/home');
+    }
+
+    public function viewAccountMaintenance() {
+        $accounts = Account::all();
+        $roles = Role::all();
+        return view('account_maintenance', ['accounts' => $accounts, 'roles' => $roles]);
+    }
+
+    public function viewUpdateRole($id) {
+        $user = Account::find($id);
+        $roles = Role::all();
+        $user_role = Role::find($user->role_id);
+
+        // @dd($user_role);
+        // @dd($user);
+        return view('update_role', [
+            'roles' => $roles,
+            'user_role' => $user_role,
+            'first_name' => $user->first_name,
+            'last_name' => $user->last_name,
+            'user' => $id
+        ]);
+    }
+
+    public function updateRole(Request $request) {
+        // @dd($request);
+        $rules = [
+            'role' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+            return back()->withErrors($validator);
+        }
+
+        // @dd($request->id);
+
+        Account::where('id', '=', $request->user_id)->update(['role_id' => $request->role]);
+
+        return redirect('/view-account-maintenance')->with('success', 'Role edited Successfully');
+    }
+
+    public function deleteAccount($id) {
+        // @dd($id);
+        Account::find($id)->delete();
+        return redirect()->back()->with('success', 'Account deleted Succesfully');
     }
 }

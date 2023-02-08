@@ -6,7 +6,9 @@
         <a class="nav-item" href="/cart">Cart</a>
         <a class="nav-item" href="/profile">Profile</a>
         @auth
-            <a class="nav-item" href="">Account Maintenance</a>
+            @if (Auth::user()->role_id == 2)
+                <a class="nav-item" href="/view-account-maintenance">Account Maintenance</a>
+            @endif
         @endauth
       </div>
       {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

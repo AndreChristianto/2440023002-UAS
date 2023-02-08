@@ -96,6 +96,6 @@ class OrderController extends Controller
             ]);
         }
         session()->forget('cart');
-        return redirect('/home');
+        return redirect()->back()->with('success', 'Checkout Completed');
     }
 }

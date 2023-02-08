@@ -127,7 +127,7 @@ class ItemController extends Controller
         ];
 
         session()->put('cart', $cart);
-        return view('/cart');
+        return redirect()->back()->with('success', 'Product added successfully');
     }
 
     public function remove(Request $request)
