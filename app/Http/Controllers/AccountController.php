@@ -140,10 +140,11 @@ class AccountController extends Controller
           return redirect('/login');
     }
 
-    public function authenticate(Request $request) {
+    public function login(Request $request) {
+        // @dd($request);
         $credentials = $request->validate([
-            'email' => 'required|email:dns',
-            'password' => 'required'
+            'email' => ['required', 'email'],
+            'password' => ['required']
         ]);
 
         if(Auth::attempt($credentials)) {
@@ -151,6 +152,7 @@ class AccountController extends Controller
             return redirect()->intended('/home');
         }
 
+        // @dd($request->password);
         return back();
     }
 
@@ -167,6 +169,10 @@ class AccountController extends Controller
     public function logout()
     {
         Auth::logout();
+
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
         return redirect('/');
     }
 }

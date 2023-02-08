@@ -3,6 +3,11 @@ h1 {
 }
 
 .home-content {
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.index-content {
     background-image: url('../img/grocery-background_opacity.jpg');
     height: 45vw;
     background-position: center;
@@ -17,8 +22,16 @@ h1 {
     margin-right: 10vw;
 }
 
+.nav-item {
+    margin-left: 1vw;
+    text-decoration: none;
+}
+
 .rounded-t-5 {
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
 }
 
+.view-cart {
+    min-height: 40vw;
+}

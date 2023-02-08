@@ -17,21 +17,21 @@
                     <div class="text-center"><strong class="text-danger">{{ $errors->first() }}</strong></div>
                 @endif
                 <h1>Login</h1>
-                <form action="" method="POST">
-                @csrf
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="email">Email address</label>
-                    <input type="email" id="email" name="email" class="form-control" />
-                </div>
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" />
-                </div>
+                <form action="/login" method="POST">
+                    @csrf
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="email">Email address</label>
+                        <input type="email" id="email" name="email" class="form-control" autofocus/>
+                    </div>
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" autofocus/>
+                    </div>
 
-                <!-- Submit button -->
-                <a href="/login" class="btn btn-primary btn-block mb-4">Sign in</a>
+                    <!-- Submit button -->
+                    <input class="btn btn-primary btn-lg" type="submit" value="Sign In" />
                 </form>
             </div>
             </div>
